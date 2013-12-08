@@ -10,24 +10,6 @@ $CARD_CONTAINER_HEIGHT: 400px;
 
 $CARD_TRANSITION_DURATION: 300ms;
 
-body {
-  overflow: hidden;
-}
-
-.explanation {
-  background: rgba(255, 255, 255, 0.75);
-  left: 20px;
-  position: fixed;
-  right: 20px;
-  text-align: center;
-  top: 0;
-  z-index: 1000;
-}
-
-.loading {
-  display: none;
-}
-
 .cards-container {
   height: $CARD_CONTAINER_HEIGHT;
   left: 50%;

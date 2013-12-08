@@ -3,11 +3,15 @@
 module.exports = function (grunt) {
   // Show elapsed time at the end
   require('time-grunt')(grunt);
+  require('load-grunt-tasks')(grunt);
 
   // Project configuration.
   grunt.initConfig({
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
+    config: {
+      src: 'src'
+    },
     banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
       '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
@@ -27,6 +31,21 @@ module.exports = function (grunt) {
         dest: 'dist/jquery.<%= pkg.name %>.js'
       }
     },
+    compass: {
+      options: {
+        sassDir: 'src/styles',
+        cssDir: 'dist',
+        javascriptsDir: 'src/scripts',
+        importPath: 'bower_components',
+        relativeAssets: true
+      },
+      dist: {},
+      server: {
+        options: {
+          debugInfo: true
+        }
+      }
+    },
     uglify: {
       options: {
         banner: '<%= banner %>'
@@ -39,7 +58,7 @@ module.exports = function (grunt) {
     qunit: {
       all: {
         options: {
-          urls: ['http://localhost:9000/test/<%= pkg.name %>.html']
+          urls: ['http://localhost:9001/test/<%= pkg.name %>.html']
         }
       }
     },
@@ -72,6 +91,10 @@ module.exports = function (grunt) {
         files: '<%= jshint.src.src %>',
         tasks: ['jshint:src', 'qunit']
       },
+      compass: {
+        files: ['<%= grunt.src %>/styles/{,*/}*.{scss,sass}'],
+        tasks: ['compass']
+      },
       test: {
         files: '<%= jshint.test.src %>',
         tasks: ['jshint:test', 'qunit']
@@ -81,20 +104,11 @@ module.exports = function (grunt) {
       server: {
         options: {
           hostname: '*',
-          port: 9000
+          port: 9001
         }
       }
     }
   });
-
-  // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-connect');
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'qunit', 'clean', 'concat', 'uglify']);

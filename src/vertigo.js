@@ -32,6 +32,8 @@
     $el._sampledCardHeight = null;
     $el._zFadeDistance = LAYER_DEPTH * ($el.children().length * 0.5);
 
+    $el.addClass('vertigo');
+
     initCards($el);
     zoom($el, 0);
 

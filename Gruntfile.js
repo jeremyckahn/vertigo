@@ -58,7 +58,7 @@ module.exports = function (grunt) {
     qunit: {
       all: {
         options: {
-          urls: ['http://localhost:9001/test/<%= pkg.name %>.html']
+          urls: ['http://localhost:9000/test/<%= pkg.name %>.html']
         }
       }
     },
@@ -92,7 +92,7 @@ module.exports = function (grunt) {
         tasks: ['jshint:src', 'qunit']
       },
       compass: {
-        files: ['<%= grunt.src %>/styles/{,*/}*.{scss,sass}'],
+        files: ['src/styles/{,*/}*.{scss,sass}'],
         tasks: ['compass']
       },
       test: {
@@ -104,7 +104,7 @@ module.exports = function (grunt) {
       server: {
         options: {
           hostname: '*',
-          port: 9001
+          port: 9000
         }
       }
     }
@@ -112,6 +112,6 @@ module.exports = function (grunt) {
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'qunit', 'clean', 'concat', 'uglify']);
-  grunt.registerTask('server', ['connect', 'watch']);
+  grunt.registerTask('server', ['compass:server', 'connect', 'watch']);
   grunt.registerTask('test', ['jshint', 'connect', 'qunit']);
 };

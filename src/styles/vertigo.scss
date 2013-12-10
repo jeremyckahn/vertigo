@@ -10,7 +10,7 @@ $CARD_CONTAINER_HEIGHT: 400px;
 
 $CARD_TRANSITION_DURATION: 300ms;
 
-.cards-container {
+.vertigo {
   height: $CARD_CONTAINER_HEIGHT;
   left: 50%;
   margin: (-$CARD_CONTAINER_HEIGHT / 2) 0 0 (-$CARD_CONTAINER_WIDTH / 2);
@@ -22,7 +22,7 @@ $CARD_TRANSITION_DURATION: 300ms;
   @include transform-style(preserve-3d);
 }
 
-  .cards-container .card {
+  .vertigo .card {
     background: #ff8;
     border: solid 1px #000;
     float: left;
@@ -34,6 +34,6 @@ $CARD_TRANSITION_DURATION: 300ms;
     width: $CARD_WIDTH;
   }
 
-  .cards-container.transition .card {
+  .vertigo.transition .card {
     @include transition(all $CARD_TRANSITION_DURATION);
   }

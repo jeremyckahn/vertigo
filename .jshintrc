@@ -1,6 +1,7 @@
 {
   "globals": {
-    "jQuery": true
+    "jQuery": true,
+    "define": true
   },
   "node": true,
   "browser": true,

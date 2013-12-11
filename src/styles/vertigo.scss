@@ -1,37 +1,25 @@
 @import "compass/css3/transform";
 @import "compass/css3/transition";
 
-$CARD_WIDTH: 100%;
-$CARD_HEIGHT: 100%;
-$CARD_MARGIN_X: 25px;
-$CARD_MARGIN_Y: 15px;
-$CARD_CONTAINER_WIDTH: 600px;
-$CARD_CONTAINER_HEIGHT: 400px;
-
 $CARD_TRANSITION_DURATION: 300ms;
 
 .vertigo {
-  height: $CARD_CONTAINER_HEIGHT;
-  left: 50%;
-  margin: (-$CARD_CONTAINER_HEIGHT / 2) 0 0 (-$CARD_CONTAINER_WIDTH / 2);
+  height: 50%;
+  margin: 15% 25%;
   position: absolute;
-  top: 50%;
-  width: $CARD_CONTAINER_WIDTH;
+  width: 50%;
   @include perspective(1000px);
   @include perspective-origin(50% 50%);
   @include transform-style(preserve-3d);
 }
 
   .vertigo .card {
-    background: #ff8;
-    border: solid 1px #000;
     float: left;
-    height: $CARD_HEIGHT;
+    height: 100%;
     left: 0;
-    margin: $CARD_MARGIN_Y $CARD_MARGIN_X;
     position: absolute;
     top: 0;
-    width: $CARD_WIDTH;
+    width: 100%;
   }
 
   .vertigo.transition .card {
